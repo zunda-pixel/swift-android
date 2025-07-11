@@ -11,5 +11,6 @@ jobs:
     container: swift:latest
     steps:
     - uses: actions/checkout@v4
+    - run: ls /github/home/.swiftpm/swift-sdks -la
     - run: ./setup.sh
     - run: ./build-swift.sh
