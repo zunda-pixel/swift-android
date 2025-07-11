@@ -1,0 +1,16 @@
+name: CI
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Demo
+    container: swift:latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: swift sdk install https://github.com/finagolfin/swift-android-sdk/releases/download/6.1.2/swift-6.1.2-RELEASE-android-24-0.1.artifactbundle.tar.gz --checksum 6d817c947870e8c85e6cab9a6ab6d7313b50fa5a20b890c396723c0b16ab32d9
+    - run: ./setup.sh
+    - run: ./build-swift.sh
