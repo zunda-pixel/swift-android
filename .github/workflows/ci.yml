@@ -5,9 +5,11 @@ on: pull_request
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Demo
     container: swift:latest
     steps:
     - uses: actions/checkout@v4
-    - run: cd Demo
     - run: ./setup.sh
     - run: ./build-swift.sh
